@@ -29,7 +29,7 @@ extern "C" {
 #endif
 
 /* Note structure */
-typedef enum
+typedef enum NoteName
 {
 	NOTE_C,
 	NOTE_CS, /* C#/Db */
@@ -41,18 +41,18 @@ typedef enum
 	NOTE_G,
 	NOTE_GS, /* G#/Ab */
 	NOTE_A,
-	NOTE_AS,  /* A#/Bb */
+	NOTE_AS, /* A#/Bb */
 	NOTE_B
 } NoteName;
 
-typedef struct
+typedef struct pitch
 {
 	NoteName     note;
 	unsigned int octave;
 } pitch;
 
 
-typedef struct
+typedef struct note
 {
 	pitch pitch;
 	duration
@@ -60,8 +60,19 @@ typedef struct
 
 
 /* Sequence structure */
+typedef struct sequence
+{
+	unsigned int bars;     /**< Number of bars in the sequence */
+	unsigned int bpm;      /**<  */
+	unsigned int bpm_sdiv; /**< 2^n steps per bpm */
+	unsigned int steps;    /**< Number of steps in the sequence */
+	note         *notes;   /**< Pointer to the notes in the sequence */
+} sequence;
 
 /* Piece structure */
+
+unsigned int slots; /**< Total number of sequence slots **/
+
 
 #if __cplusplus
 } /* extern "C" */
