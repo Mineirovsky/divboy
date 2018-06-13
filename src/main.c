@@ -39,18 +39,18 @@ void VBlankInterrupt(void)
 	scanKeys();
 }
 
-void Init(void)
+inline void Init(void)
 {
-	// Initialize interrupts
+	/* Initialize interrupts */
 	irqInit();
 
-	// Bind function for VBlank interrupt
+	/* Bind function for VBlank interrupt */
 	irqSet(IRQ_VBLANK, VBlankInterrupt);
 
-	// Enable VBlank interrupt
+	/* Enable VBlank interrupt */
 	irqEnable(IRQ_VBLANK);
 
-	// Allow interrupts
+	/* Allow interrupts */
 	REG_IME = 1;
 }
 
